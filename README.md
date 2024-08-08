@@ -14,4 +14,38 @@ https://github.com/520hacker/two-api/tree/main/vue-sample
 - 默认请求地址为当前域名，请自行做好 /v1 到 {AI Host}/v1 的反向代理 
 - 创建预览编辑器调用的是 suishouji 项目，如需此项功能，请添加 /api 到 https://suishouji.qiangtu.com/api 的反代， 参考根目录 nginx_suishouji.conf
 
+# Docker 安装
+
+### 参数
+
+ports：  9001 为您指定对外的端口，80为容器内端口
+
+proxy_url： 您的AI服务器地址
+
+proxy_key： 您的AI服务器的Token Key
+
+### 配置样本
+
+```yaml
+version: '3'
+services:
+  lunwenshenqi:
+    image: odinluo/lunwenshenqi:latest
+    ports:
+      - 9001:80     
+    environment: 
+      - proxy_url "http://127.0.0.1:7001"
+      - proxy_key "Bearer sk-TwoApiKey" 
+```
+
+
+
+## Docker Run
+
+```bash
+docker run -d -p 9001:80 \
+  -e proxy_url="http://127.0.0.1:7001" \
+  -e proxy_key="Bearer sk-TwoApiKey" \
+  odinluo/lunwenshenqi:latest
+```
 
