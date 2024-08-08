@@ -1,6 +1,6 @@
  
  
-docker build -f "Dockerfile" --force-rm -t twoapidemo  "./"
+docker build -f "Dockerfile" --force-rm -t lunwenshenqi  "./"
 
 set yy=%date:~0,4%
 set mm=%date:~5,2%
@@ -8,11 +8,11 @@ set dd=%date:~8,2%
 set f1=%yy%-%mm%-%dd%
 set f2=%yy%%mm%%dd%
 
-docker tag library/twoapidemo:latest odinluo/twoapidemo:0.%f2%
-docker push odinluo/twoapidemo:0.%f2%
+docker tag library/lunwenshenqi:latest odinluo/lunwenshenqi:0.%f2%
+docker push odinluo/lunwenshenqi:0.%f2%
 
-docker tag library/twoapidemo:latest odinluo/twoapidemo:latest
-docker push odinluo/twoapidemo:latest
+docker tag library/lunwenshenqi:latest odinluo/lunwenshenqi:latest
+docker push odinluo/lunwenshenqi:latest
 
-docker save odinluo/twoapidemo:latest > c:\download\twoapi-demo-core-%f1%.tar
-copy c:\download\twoapi-demo-core-%f1%.tar \\10.0.0.1\docker\images\
+docker save odinluo/lunwenshenqi:latest > c:\download\lunwenshenqi-%f1%.tar
+copy c:\download\lunwenshenqi-%f1%.tar \\10.0.0.1\docker\images\
