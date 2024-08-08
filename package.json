@@ -15,6 +15,7 @@
   "main": "index.js",
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@kangc/v-md-editor": "^2.3.17",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.8",
