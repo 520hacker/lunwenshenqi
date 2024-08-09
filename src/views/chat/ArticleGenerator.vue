@@ -470,7 +470,20 @@ ${desc}
                     "key": keyJson.key,
                     "content": content.value
                 }).then((rdata) => {
-                    window.open("https://suishouji.qiangtu.com/" + keyJson.key)
+                    var editor_url = ''
+                    
+                    try {
+                        editor_url = process.env.editor_url;
+                    }
+                    catch (e) {
+                        console.log(e)
+                    }
+
+                    if (!editor_url) {
+                        editor_url = "https://suishouji.qiangtu.com";
+                    }
+
+                    window.open(editor_url.trim('/') + "/" + keyJson.key)
                     ElMessage({
                         type: 'success',
                         message: '已弹出编辑窗!',
@@ -654,7 +667,7 @@ ${desc}
             })
         }
 
- 
+
         const processContent = (content) => {
             // 匹配包含 JSON 类型标记的 Markdown 代码块
             const jsonWithTypeRegex = /```json\n([\s\S]*?)\n```/;
@@ -686,7 +699,7 @@ ${desc}
             try {
                 return JSON.parse(content.trim());
             } catch (error) {
-                alert("JSON格式错误:\n"+ content.trim())
+                alert("JSON格式错误:\n" + content.trim())
                 console.error("Error parsing JSON:", error);
                 return null;
             }
