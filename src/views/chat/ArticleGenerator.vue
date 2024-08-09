@@ -277,6 +277,8 @@ export default {
     },
 
     setup() {
+        const model_main = ref('gpt-4o-mini')
+        const model_draw = ref('gpt-4-dalle')
         const models = ref(["gpt-3.5-turbo-16k", "gemini-pro", "gpt-4", "gpt-4o-mini", "claude-3"])
         const loading = ref(false)
         const step = ref(1)
@@ -285,7 +287,7 @@ export default {
         const content = ref('')
         const form = ref({
             "id": "",
-            "model": "gpt-3.5-turbo-16k",
+            "model": model_main.value,
             "type": '学术论文',
             "style": ["严肃严谨", "提纲挈领", "引经据典", "细节描述", '引用数据'],
             "title": '未来30年的AI与人类',
@@ -323,6 +325,15 @@ export default {
 
         const load = () => {
             form.value.id = Date.now()
+            try {
+                models.value = process.env.ai_models.split(",");
+                model_main.value = process.env.ai_model_main;
+                model_draw.value = process.env.ai_model_draw;
+            }
+            catch (e) {
+                console.log(e)
+            }
+
             loadFromLocal()
         }
         load()
@@ -470,8 +481,7 @@ ${desc}
                     "key": keyJson.key,
                     "content": content.value
                 }).then((rdata) => {
-                    var editor_url = ''
-                    
+                    var editor_url = '' 
                     try {
                         editor_url = process.env.editor_url;
                     }
@@ -513,7 +523,7 @@ ${desc}
             console.log(messages)
 
             loading.value = true
-            var params = initBaseMessage(messages, "gpt-4-dalle", false)
+            var params = initBaseMessage(messages, model_draw.value, false)
 
 
             var url = '/v1/chat/completions'
@@ -652,7 +662,7 @@ ${desc}
                 message: '索引使用高级AI,速度较慢，请耐心等待!',
             })
 
-            var params = initBaseMessage(messages, "gpt-4o-mini", false)
+            var params = initBaseMessage(messages, model_main.value, false)
             makeSingleChat(params).then(data => {
                 try {
                     var content = data.choices[0].message.content

@@ -38,6 +38,12 @@ proxy_key： 您的AI服务器的Token Key
 
 editor_url: 你的AI编辑器地址
 
+ai_models： 可选模型 "gpt-3.5-turbo-16k,gemini-pro,gpt-4,gpt-4o-mini,claude-3"
+
+ai_main_model： 框架分解模型 "gpt-4o-mini"
+
+ai_draw_model： 画图模型 "gpt-4-dalle"
+
 ### 配置样本
 
 ```yaml
@@ -51,6 +57,9 @@ services:
       - proxy_url "http://127.0.0.1:7001"
       - proxy_key "Bearer sk-TwoApiKey" 
       - editor_url "https://suishouji.qiangtu.com"
+      - ai_models "gpt-3.5-turbo-16k,gemini-pro,gpt-4,gpt-4o-mini,claude-3"
+      - ai_main_model "gpt-4o-mini"
+      - ai_draw_model "gpt-4-dalle"
 ```
 
 
@@ -62,6 +71,9 @@ docker run -d -p 9001:80 \
   -e proxy_url="http://127.0.0.1:7001" \
   -e proxy_key="Bearer sk-TwoApiKey" \
   -e editor_url="https://suishouji.qiangtu.com" \
+  -e ai_models="gpt-3.5-turbo-16k,gemini-pro,gpt-4,gpt-4o-mini,claude-3" \
+  -e ai_main_model="gpt-4o-mini" \
+  -e ai_draw_model="gpt-4-dalle" \
   odinluo/lunwenshenqi:latest
 ```
 
