@@ -17,8 +17,7 @@ server {
     
     # 添加的反向代理配置 
     location ^~ /api {
-        proxy_pass http://43.156.116.90:7018/api;
-        proxy_set_header Host suishouji.qiangtu.com;
+        proxy_pass ${editor_url}/api; 
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header REMOTE-HOST $remote_addr;

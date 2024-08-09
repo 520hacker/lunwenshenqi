@@ -4,6 +4,7 @@ FROM nginx:alpine
 # 设置环境变量
 ENV proxy_url "http://43.156.116.90:7001"
 ENV proxy_key "Bearer sk-TwoApi3f6D8e2C0f62446C41821B10d3FB4FF5"
+ENV editor_url "http://43.156.116.90:7018" 
 
 # 删除nginx默认配置
 RUN rm /etc/nginx/conf.d/default.conf

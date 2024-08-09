@@ -36,6 +36,8 @@ proxy_url： 您的AI服务器地址
 
 proxy_key： 您的AI服务器的Token Key
 
+editor_url: 你的AI编辑器地址
+
 ### 配置样本
 
 ```yaml
@@ -48,6 +50,7 @@ services:
     environment: 
       - proxy_url "http://127.0.0.1:7001"
       - proxy_key "Bearer sk-TwoApiKey" 
+      - editor_url "https://suishouji.qiangtu.com"
 ```
 
 
@@ -58,6 +61,7 @@ services:
 docker run -d -p 9001:80 \
   -e proxy_url="http://127.0.0.1:7001" \
   -e proxy_key="Bearer sk-TwoApiKey" \
+  -e editor_url="https://suishouji.qiangtu.com" \
   odinluo/lunwenshenqi:latest
 ```
 
