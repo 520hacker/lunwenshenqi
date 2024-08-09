@@ -60,3 +60,6 @@ docker run -d -p 9001:80 \
   odinluo/lunwenshenqi:latest
 ```
 
+## 宝塔安装
+
+- 文档链接: https://github.com/520hacker/lunwenshenqi/blob/main/docs/%E4%BB%8E%E5%AE%9D%E5%A1%94%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85%E8%AE%BA%E6%96%87%E7%A5%9E%E5%99%A8%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8.md
